@@ -1,0 +1,16 @@
+{
+ "manifest_version": 2,
+ "name": "Burntguy",
+ "description": "Project to call APIs to get random image as background and weather.",
+ "version": "1",
+ "author": "R Pal",
+ "browser_action": {
+   "default_icon": "Paper_Output_final.png",
+   "default_title": "Have a good day"
+ },
+"chrome_url_overrides" : {
+  "newtab": "newtab.html"
+},
+ "permissions": ["https://source.unsplash.com/", "https://query.yahooapis.com/"],
+ "content_security_policy": "script-src 'self' 'sha256-o4jrDJWeov23yBD4X5U3AI96Gf370qYmDE1r7ifsqaE='"
+}

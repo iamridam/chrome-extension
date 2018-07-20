@@ -1,0 +1,44 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+
+
+
+<head><META http-equiv="Content-Type" content="text/html; charset=utf-8">
+
+
+</head>
+
+
+
+<body style="background-image: url(https://unsplash.it/1300/800?random);">
+  
+  
+  
+  <div id="date-time" style="background-color: white; width: 300px;">
+  </div>
+
+  <div id="weather" style="background-color: white; width: 300px;">
+  </div>
+
+
+
+
+</body>
+<script type="text/javascript">
+var d = new Date();
+document.getElementById("date-time").innerHTML = d;
+var xhttp = new XMLHttpRequest();
+xhttp.onreadystatechange = function() {
+    if (xhttp.readyState == XMLHttpRequest.DONE) {
+        var responseObject = JSON.parse(xhttp.responseText);
+        var weather = responseObject.query.results.channel.item.condition;
+        document.getElementById("weather").innerHTML = "Temperature: " + weather.temp + " Fahrenheit " + " and the Weather Condition: " + 
+        weather.text; 
+    }
+}
+xhttp.open("GET", "https://query.yahooapis.com/v1/public/yql?q=select%20item.condition%20from%20weather.forecast%20where%20woeid%20%3D%202295386&format=json&env=store%3A%2F%2Fdatatables.org%2Falltableswithkeys", true);
+xhttp.setRequestHeader("Content-type", "application/json");
+xhttp.send();
+</script>
+
+</html>
